@@ -21,7 +21,7 @@ public class SchetchCanvas {
 
     private char[][] buildCanvas(int width, int height) {
         final char[][] canvas = new char[height][];
-        for (int i = 0; i < height; i++) {
+        for (int i = 0; i < height; i++) { //TODO: review this with a better array filling: Array.fill
             canvas[i] = new char[width];
             for (int j = 0; j < width; j++) {
                 if (i == 0 || i == height - 1) {
