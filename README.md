@@ -1,1 +1,1 @@
-Tech schetch
+Tech sketch
