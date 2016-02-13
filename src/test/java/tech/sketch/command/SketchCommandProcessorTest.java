@@ -2,13 +2,14 @@ package tech.sketch.command;
 
 
 import org.junit.Test;
+import tech.sketch.canvas.TextGraphicShell;
 import tech.sketch.command.CommandResult.CommandStatus;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class SketchCommandProcessorTest {
-    private final SketchCommandProcessor cp = new SketchCommandProcessor();
+    private final SketchCommandProcessor cp = new SketchCommandProcessor(new TextGraphicShell());
 
     @Test
     public void testExitCommand() {

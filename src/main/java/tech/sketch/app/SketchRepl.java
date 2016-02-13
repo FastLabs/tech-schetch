@@ -1,6 +1,7 @@
 package tech.sketch.app;
 
 
+import tech.sketch.canvas.TextGraphicShell;
 import tech.sketch.command.CommandResult;
 import tech.sketch.command.CommandResult.CommandStatus;
 import tech.sketch.command.SketchCommandProcessor;
@@ -13,7 +14,7 @@ import java.io.Console;
  */
 public class SketchRepl {
 
-    private final SketchCommandProcessor commandProcessor = new SketchCommandProcessor();
+    private final SketchCommandProcessor commandProcessor = new SketchCommandProcessor(new TextGraphicShell());
 
     public void start() {
 

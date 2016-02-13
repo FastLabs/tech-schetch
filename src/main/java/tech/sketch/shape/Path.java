@@ -3,6 +3,9 @@ package tech.sketch.shape;
 
 public interface Path {
 
-    int getFrom();
-    int getTo();
+    Point getFrom();
+
+    Point getTo();
+
+    char getFill();
 }

@@ -2,5 +2,15 @@ package tech.sketch.shape;
 
 
 public abstract class AbstractShape implements Shape {
-    protected abstract Path[] getPaths();
+    private final char fill;
+
+
+    protected AbstractShape(char fill) {
+        this.fill = fill;
+    }
+
+
+    public char getFill() {
+        return fill;
+    }
 }
