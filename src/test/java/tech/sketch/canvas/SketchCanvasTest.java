@@ -63,6 +63,7 @@ public class SketchCanvasTest {
         String result = canvas.fill(4, 4, ' ', '@');
         System.out.println(result);
     }
+
     @Test
     public void testEnclosedAreaFill() {
         final SketchCanvas canvas = new SketchCanvas(20, 10);

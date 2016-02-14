@@ -21,12 +21,12 @@ public class BucketFillCommand extends AbstractSketchCommand<SketchCanvas> {
 
     @Override
     public String getCommandFormat() {
-        return "B %i %i";
+        return "B %i %i %c";
     }
 
     @Override
     public CommandResult execute(SketchCanvas context, SketchRenderer renderer) {
-        renderer.render(fill(x, y, SketchCanvas.DEFAULT_FILL, this.fill, context));
+        renderer.render(fill(x+1, y+1, SketchCanvas.DEFAULT_FILL, this.fill, context));
         return CommandResult.success();
     }
 
@@ -37,13 +37,13 @@ public class BucketFillCommand extends AbstractSketchCommand<SketchCanvas> {
         if (targetFill == replacementFill) {
             return "";
         }
-        if (canvas[x][y] != targetFill) {
+        if (canvas[y][x] != targetFill) {
             return "";
         }
-        if (x == 0 || y == 0 || x == sketchCanvas.getWidth() || y == sketchCanvas.getHeight()) {
+        if (x == 0 || y == 0 || x == sketchCanvas.getWidth()+1 || y == sketchCanvas.getHeight()+1) {
             return "";
         }
-        canvas[x][y] = replacementFill;
+        canvas[y][x] = replacementFill;
         fill(x, y - 1, targetFill, replacementFill, sketchCanvas);
         fill(x, y + 1, targetFill, replacementFill, sketchCanvas);
         fill(x - 1, y, targetFill, replacementFill, sketchCanvas);

@@ -1,6 +1,8 @@
 package tech.sketch.shape;
 
-
+/**
+ * A connected simple path with from and to point and filling for that path
+ */
 public class SimplePath implements Path {
 
 

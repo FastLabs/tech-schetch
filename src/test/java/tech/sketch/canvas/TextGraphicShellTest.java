@@ -14,18 +14,6 @@ import static tech.sketch.command.CommandResult.CommandStatus.SUCCESS;
 
 public class TextGraphicShellTest {
 
-    class BufferedRendererAsserter implements SketchRenderer {
-        private String content;
-        @Override
-        public void render(String content) {
-            this.content = content;
-        }
-
-        public void assertContent(Function<String, Boolean>assertFn) {
-            Assert.assertTrue(assertFn.apply(content));
-        }
-    }
-
 
     @Test
     public void testCanvasCreation() {
