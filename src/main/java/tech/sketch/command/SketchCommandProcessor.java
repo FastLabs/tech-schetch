@@ -28,12 +28,20 @@ public class SketchCommandProcessor {
                 case "Q":
                     return CommandResult.exitCommand();
                 case "L":
-                    return executeCommand(new LineSketchCommand(commandSpec));
+                    return executeCommand(new LineShapeCommand(commandSpec));
+                case "C":
+                    return newCanvas(new CreateCanvasCommand(commandSpec));
+                case "R" :
+                    return executeCommand(new RectangleShapeCommand(commandSpec));
                 default:
                     return unknownCommand(commandName);
             }
         }
         return errorCommand(String.format("Error processing command %s use the format %s", command, SUPPORTED_COMMAND_FORMAT));
+    }
+
+    private CommandResult newCanvas(CreateCanvasCommand cmd) {
+        return graphicShell.newSketchCanvas(cmd);
     }
 
     private CommandResult executeCommand(SketchCommand cmd) {

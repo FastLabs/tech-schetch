@@ -26,4 +26,12 @@ public class SketchCommandProcessorTest {
 
         assertEquals(CommandStatus.UNKNOWN, result.getStatus());
     }
+
+    @Test
+    public void testCreateCommand() {
+        final CommandResult result = cp.processCommand("C 20 20");
+        assertNotNull(result);
+
+        assertEquals(CommandStatus.SUCCESS, result.getStatus());
+    }
 }

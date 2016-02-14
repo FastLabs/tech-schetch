@@ -32,7 +32,7 @@ public class SketchRepl {
                 }
 
             }
-            while (commandResult.getStatus() == CommandStatus.EXIT); //TODO: maybe I need more semantics on exit commands
+            while (commandResult.getStatus() != CommandStatus.EXIT); //TODO: maybe I need more semantics on exit commands
 
             System.out.println("Job Done! Bye!");
         } else {

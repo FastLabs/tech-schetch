@@ -1,7 +1,7 @@
 package tech.sketch.command;
 
 
-public abstract class AbstractSketchCommand implements SketchCommand {
+public abstract class AbstractSketchCommand<T> implements SketchCommand<T> {
 
 
 

@@ -4,7 +4,7 @@ package tech.sketch.command;
 import tech.sketch.shape.Rectangle;
 import tech.sketch.shape.Shape;
 
-public class CreateCanvasCommand  extends AbstractSketchCommand {
+public class CreateCanvasCommand  extends AbstractShapeCommand {
 
 
 

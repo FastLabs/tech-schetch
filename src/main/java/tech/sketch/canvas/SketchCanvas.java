@@ -12,6 +12,9 @@ import java.util.Arrays;
 
 public class SketchCanvas {
 
+    private final int BORDER_OFFSET = 1;
+    public static final char DEFAULT_FILL = ' ';
+
 
     private final int height;
     private final int width;
@@ -20,7 +23,7 @@ public class SketchCanvas {
     public SketchCanvas(int width, int height) {
         this.height = height;
         this.width = width;
-        this.canvas = buildCanvas(width + 2, height + 2);
+        this.canvas = buildCanvas(width + 2 * BORDER_OFFSET, height + 2* BORDER_OFFSET);
 
     }
 
@@ -30,20 +33,24 @@ public class SketchCanvas {
             canvas[i] = new char[width];
             for (int j = 0; j < width; j++) {
                 if (i == 0 || i == height - 1) {
-                    // canvas[i][j] = '-';
-                    canvas[i][j] = ' ';
+
+                    canvas[i][j] = DEFAULT_FILL;
                 } else {
-                    if (j == 0 || j == width - 1) {
-                        //    canvas[i][j] = '|';
-                        canvas[i][j] = ' ';
-                    } else {
-                        canvas[i][j] = ' ';
-                    }
+                    //if (j == 0 || j == width - 1) {
+
+                      //  canvas[i][j] = ' ';
+                    //} else {
+                        canvas[i][j] = DEFAULT_FILL;
+                    //}
                 }
             }
         }
 
         return canvas;
+    }
+    //TODO: check how do i expose this
+    public char [] [] getCanvas() {
+        return  canvas;
     }
 
     public int getHeight() {
@@ -53,8 +60,8 @@ public class SketchCanvas {
     public int getWidth() {
         return width;
     }
-
-    private String printCanvas() {
+//TODO: check the exposing this method
+    public String printCanvas() {
         final StringBuilder result = new StringBuilder();
         for (char[] line : canvas) {
             result.append(line).append("\n");
@@ -69,14 +76,9 @@ public class SketchCanvas {
         for (Path path : paths) {
             final Point from = path.getFrom(),
                     to = path.getTo();
-            boolean vertical = from.getX() == to.getX();
-            for (int i = from.getX() +1; i <= to.getX()+1; i++) {
-                for(int j = from.getY()+1; j<= to.getY()+1;j++){
-                    //if( vertical) {
-                        canvas[j][i] = path.getFill();
-               //     } else {
-                 //       canvas[i][j] = path.getFill();
-                   // }
+            for (int i = from.getX() + BORDER_OFFSET; i <= to.getX() + BORDER_OFFSET; i++) {
+                for (int j = from.getY() + BORDER_OFFSET; j <= to.getY() + BORDER_OFFSET; j++) {
+                    canvas[j][i] = path.getFill();
                 }
             }
         }

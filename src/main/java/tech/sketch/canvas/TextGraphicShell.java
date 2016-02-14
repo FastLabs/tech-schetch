@@ -1,9 +1,7 @@
 package tech.sketch.canvas;
 
 
-import tech.sketch.command.CommandResult;
-import tech.sketch.command.CreateCanvasCommand;
-import tech.sketch.command.SketchCommand;
+import tech.sketch.command.*;
 
 public class TextGraphicShell implements GraphicShell {
 
@@ -24,13 +22,15 @@ public class TextGraphicShell implements GraphicShell {
         return currentCanvas;
     }
 
+
     @Override
+    @SuppressWarnings("unchecked")
     public CommandResult execute(SketchCommand cmd) {
         if (currentCanvas != null) {
-            renderer.render(currentCanvas.draw(cmd.sketchIt()));
-            return CommandResult.success();
+            return cmd.execute(currentCanvas, renderer);
+
         }
-        return CommandResult.errorCommand("Cannot  sketch on empty canvas"); //TODO: meke this a better message
+        return CommandResult.errorCommand("Cannot  sketch on empty canvas"); //TODO: make this a better message
     }
 
     @Override

@@ -10,13 +10,13 @@ import static org.junit.Assert.assertEquals;
 
 public class SketchCanvasTest {
 
-    public final SketchCanvas canvas = new SketchCanvas(20, 10);
+
 
     @Test
     @Ignore
     //TODO: fix this as at the moment rendering of the borders has changed
     public void testCanvasRender() {
-        //final SketchCanvas canvas = new SketchCanvas(20, 10);
+        final SketchCanvas canvas = new SketchCanvas(20, 10);
         final String content = canvas.draw(null);
         final String[] lines = content.split("\n");
         assertEquals("Total lines including borders", 12, lines.length);
@@ -29,7 +29,7 @@ public class SketchCanvasTest {
 
     @Test
     public void testHorizontal() {
-        // final SketchCanvas canvas = new SketchCanvas(20, 10);
+        final SketchCanvas canvas = new SketchCanvas(20, 10);
         final Line l = new Line(0, 0, 10, 0, '-');
         final String result = canvas.draw(l);
         final String[] lines = result.split("\n");
@@ -39,6 +39,7 @@ public class SketchCanvasTest {
 
     @Test
     public void testVerticalLine() {
+         final SketchCanvas canvas = new SketchCanvas(20, 10);
         final Line l = new Line(0, 0, 0, 10);
         final String content = canvas.draw(l);
         System.out.println(content);
@@ -51,4 +52,28 @@ public class SketchCanvasTest {
         String content = canvas.draw(r);
         System.out.println(content);
     }
+
+   /* @Test
+    public void testSimpleFill() {
+        final SketchCanvas canvas = new SketchCanvas(20, 10);
+        final Rectangle r  = new Rectangle(-1, -1, 9, 9);
+        final Line l = new Line(2,2, 2, 6);
+        canvas.draw(r);
+        String c1 = canvas.draw(l);
+        String result = canvas.fill(4, 4, ' ', '@');
+        System.out.println(result);
+    }
+    @Test
+    public void testEnclosedAreaFill() {
+        final SketchCanvas canvas = new SketchCanvas(20, 10);
+        final Rectangle border  = new Rectangle(-1, -1, 9, 9);
+        final Rectangle r  = new Rectangle(0, 1, 5, 5);
+        canvas.draw(border);
+        final String c1 = canvas.draw(r);
+        final String c2 = canvas.fill(3,4, ' ', '@');
+        System.out.println(c2);
+
+
+
+    }*/
 }

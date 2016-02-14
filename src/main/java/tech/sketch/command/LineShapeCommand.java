@@ -4,13 +4,13 @@ import tech.sketch.shape.Line;
 import tech.sketch.shape.Shape;
 
 
-public class LineSketchCommand extends AbstractSketchCommand {
+public class LineShapeCommand extends AbstractShapeCommand {
 
 
     final int x1, y1, x2, y2;
 
 
-    public LineSketchCommand(String[] commandSpec) {
+    public LineShapeCommand(String[] commandSpec) {
         super(commandSpec);
         x1 = Integer.parseInt(commandSpec[1]);
         y1 = Integer.parseInt(commandSpec[2]);
