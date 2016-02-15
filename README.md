@@ -44,5 +44,5 @@ Side effect classes that are not covered by the unit tests: Main and SketchRepl
 
 ##Execution
 Git and Apache Maven is required
-Current released version is tagged with RELEASE1 tag, please run: git checkout RELEASE1
-Execute the application with the following command: mvn exec:java
+Current released version is tagged with RELEASE1 tag, please run: **git checkout RELEASE1**
+Execute the application with the following command: **mvn compile exec:java**
