@@ -8,7 +8,9 @@ import tech.sketch.shape.Shape;
 import java.util.Arrays;
 
 
-//TODO: do i need to build a hierarchy?
+/**
+ * Simple text symbol canvas implementation
+ */
 
 public class SketchCanvas {
 
@@ -23,34 +25,23 @@ public class SketchCanvas {
     public SketchCanvas(int width, int height) {
         this.height = height;
         this.width = width;
-        this.canvas = buildCanvas(width + 2 * BORDER_OFFSET, height + 2* BORDER_OFFSET);
+        this.canvas = buildCanvas(width + 2 * BORDER_OFFSET, height + 2 * BORDER_OFFSET);
 
     }
 
     private char[][] buildCanvas(int width, int height) {
         final char[][] canvas = new char[height][];
-        for (int i = 0; i < height; i++) { //TODO: review this with a better array filling: Array.fill
+        for (int i = 0; i < height; i++) {
             canvas[i] = new char[width];
-            for (int j = 0; j < width; j++) {
-                if (i == 0 || i == height - 1) {
-
-                    canvas[i][j] = DEFAULT_FILL;
-                } else {
-                    //if (j == 0 || j == width - 1) {
-
-                      //  canvas[i][j] = ' ';
-                    //} else {
-                        canvas[i][j] = DEFAULT_FILL;
-                    //}
-                }
-            }
+            Arrays.fill(canvas[i], DEFAULT_FILL);
         }
 
         return canvas;
     }
+
     //TODO: check how do i expose this
-    public char [] [] getCanvas() {
-        return  canvas;
+    public char[][] getCanvas() {
+        return canvas;
     }
 
     public int getHeight() {
@@ -60,15 +51,14 @@ public class SketchCanvas {
     public int getWidth() {
         return width;
     }
-//TODO: check the exposing this method
+
+    //TODO: check the exposing this method
     public String printCanvas() {
         final StringBuilder result = new StringBuilder();
         for (char[] line : canvas) {
             result.append(line).append("\n");
         }
-
         return result.toString();
-
     }
 
     private void renderShape(Shape shape) {
@@ -82,10 +72,13 @@ public class SketchCanvas {
                 }
             }
         }
-
-
     }
 
+    /**
+     * Renders a set fo shapes on the canvas
+     * @param shapes
+     * @return
+     */
     public String draw(Shape... shapes) {
         Arrays.stream(shapes).forEach(this::renderShape);
         return printCanvas();

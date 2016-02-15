@@ -15,8 +15,8 @@ public class CommandResult {
         UNKNOWN
     }
 
-    final CommandStatus status;
-    final Optional<String> message;
+    private final CommandStatus status;
+    private final Optional<String> message;
 
     private CommandResult(CommandStatus status, String message) {
         this.status = status;

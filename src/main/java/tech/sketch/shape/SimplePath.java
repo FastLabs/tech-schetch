@@ -28,6 +28,14 @@ public class SimplePath implements Path {
         this(new Point(x1, y1), new Point (x2, y2), fill);
     }
 
+    @Override
+    public String toString() {
+        return "SimplePath{" +
+                "from=" + from +
+                ", to=" + to +
+                ", fill=" + fill +
+                '}';
+    }
 
     @Override
     public Point getFrom() {

@@ -3,7 +3,9 @@ package tech.sketch.command;
 import tech.sketch.canvas.SketchCanvas;
 import tech.sketch.canvas.SketchRenderer;
 
-
+/**
+ * Implementation of the recursive flood fill (bucket fill) algorithm
+ */
 public class BucketFillCommand extends AbstractSketchCommand<SketchCanvas> {
     private final int x, y;
     private final char fill;

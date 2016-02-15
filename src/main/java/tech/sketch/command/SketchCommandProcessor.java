@@ -31,8 +31,10 @@ public class SketchCommandProcessor {
                     return executeCommand(new LineShapeCommand(commandSpec));
                 case "C":
                     return newCanvas(new CreateCanvasCommand(commandSpec));
-                case "R" :
+                case "R":
                     return executeCommand(new RectangleShapeCommand(commandSpec));
+                case "B":
+                    return executeCommand(new BucketFillCommand(commandSpec));
                 default:
                     return unknownCommand(commandName);
             }
@@ -45,10 +47,16 @@ public class SketchCommandProcessor {
     }
 
     private CommandResult executeCommand(SketchCommand cmd) {
-        if (cmd.isValidCommand()) {
-            return graphicShell.execute(cmd);
-        } else {
-            return errorCommand(String.format("Invalid command format. Required: %s", cmd.getCommandFormat()));
+        try {
+            if (cmd.isValidCommand()) {
+                return graphicShell.execute(cmd);
+            } else {
+                return errorCommand(String.format("Invalid command format. Required: %s", cmd.getCommandFormat()));
+            }
+        } catch (RuntimeException ex) {
+            return errorCommand(String.format("Error executing the command: %s expected format: %s",
+                    cmd.getCommandName(),
+                    cmd.getCommandFormat()));
         }
     }
 }
