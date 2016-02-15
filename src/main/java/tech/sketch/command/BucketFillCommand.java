@@ -28,21 +28,20 @@ public class BucketFillCommand extends AbstractSketchCommand<SketchCanvas> {
 
     @Override
     public CommandResult execute(SketchCanvas context, SketchRenderer renderer) {
-        renderer.render(fill(x+1, y+1, SketchCanvas.DEFAULT_FILL, this.fill, context));
+        renderer.render(fill(x + 1, y + 1, SketchCanvas.DEFAULT_FILL, this.fill, context));
         return CommandResult.success();
     }
 
 
-    //TODO: this definitely should be fixed
     public String fill(int x, int y, char targetFill, char replacementFill, SketchCanvas sketchCanvas) {
-        final char [][] canvas = sketchCanvas.getCanvas();
+        final char[][] canvas = sketchCanvas.getCanvas();
         if (targetFill == replacementFill) {
             return "";
         }
         if (canvas[y][x] != targetFill) {
             return "";
         }
-        if (x == 0 || y == 0 || x == sketchCanvas.getWidth()+1 || y == sketchCanvas.getHeight()+1) {
+        if (x == 0 || y == 0 || x == sketchCanvas.getWidth() + 1 || y == sketchCanvas.getHeight() + 1) {
             return "";
         }
         canvas[y][x] = replacementFill;

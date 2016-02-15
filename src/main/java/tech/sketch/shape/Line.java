@@ -1,16 +1,10 @@
 package tech.sketch.shape;
 
 
-
 public class Line extends AbstractShape {
     private final Point one;
     private final Point two;
 
-
-
-    public static LineBuilder horizontal() {
-        return new LineBuilder();
-    }
 
     public Line(int x1, int y1, int x2, int y2, char fill) {
         super(fill);
@@ -27,17 +21,14 @@ public class Line extends AbstractShape {
         return one.getX() == two.getX();
     }
 
-    public boolean isHorisontal() {
+    public boolean isHorizontal() {
         return one.getY() == two.getY();
     }
 
     @Override
     public Path[] getPaths() {
-        return new Path[] {new SimplePath(one, two, getFill())};
+        return new Path[]{new SimplePath(one, two, getFill())};
     }
 
-//TODO: do i still need this?
-    public static class LineBuilder {
 
-    }
 }

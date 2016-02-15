@@ -39,7 +39,7 @@ public class SketchCanvas {
         return canvas;
     }
 
-    //TODO: check how do i expose this
+
     public char[][] getCanvas() {
         return canvas;
     }
@@ -52,7 +52,7 @@ public class SketchCanvas {
         return width;
     }
 
-    //TODO: check the exposing this method
+
     public String printCanvas() {
         final StringBuilder result = new StringBuilder();
         for (char[] line : canvas) {

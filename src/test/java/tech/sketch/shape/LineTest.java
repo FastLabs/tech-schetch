@@ -26,7 +26,7 @@ public class LineTest {
     @Test
     public void testVerticalLine() {
         final Line verticalLine = new Line(1, 1, 10, 1);
-        assertTrue(verticalLine.isHorisontal());
+        assertTrue(verticalLine.isHorizontal());
         assertEquals('*', verticalLine.getFill());
         final Path[] paths = verticalLine.getPaths();
         assertEquals(1, paths.length);

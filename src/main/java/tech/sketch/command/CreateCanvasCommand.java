@@ -11,14 +11,22 @@ public class CreateCanvasCommand extends AbstractShapeCommand {
 
     public CreateCanvasCommand(String[] commandSpec) {
         super(commandSpec);
-        try {
-            width = Integer.parseInt(commandSpec[1]);
-            height = Integer.parseInt(commandSpec[2]);
-        } catch (NumberFormatException ex) {
-            width = Integer.MIN_VALUE;
-            height = Integer.MIN_VALUE;
+        if (commandSpec.length != 3) {
+            commandError();
+        } else {
+            try {
+                width = Integer.parseInt(commandSpec[1].trim());
+                height = Integer.parseInt(commandSpec[2].trim());
+            } catch (NumberFormatException ex) {
+                commandError();
 
+            }
         }
+    }
+
+    private void commandError() {
+        width = Integer.MIN_VALUE;
+        height = Integer.MIN_VALUE;
     }
 
     public int getHeight() {

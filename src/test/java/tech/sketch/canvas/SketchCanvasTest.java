@@ -11,22 +11,6 @@ import static org.junit.Assert.assertEquals;
 public class SketchCanvasTest {
 
 
-
-    @Test
-    @Ignore
-    //TODO: fix this as at the moment rendering of the borders has changed
-    public void testCanvasRender() {
-        final SketchCanvas canvas = new SketchCanvas(20, 10);
-        final String content = canvas.draw(null);
-        final String[] lines = content.split("\n");
-        assertEquals("Total lines including borders", 12, lines.length);
-        assertEquals("First Line", "----------------------", lines[0]);
-        assertEquals("Last Line", "----------------------", lines[lines.length - 1]);
-        for (int i = 1; i < lines.length - 1; i++) {
-            assertEquals("Empty screen line " + i, "|                    |", lines[i]);
-        }
-    }
-
     @Test
     public void testHorizontal() {
         final SketchCanvas canvas = new SketchCanvas(20, 10);

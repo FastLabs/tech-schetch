@@ -27,12 +27,12 @@ public class SketchRepl {
                 switch (commandResult.getStatus()) {
                     case ERROR:
                     case UNKNOWN:
-                        System.out.println(commandResult.getMessage());
+                        System.out.println(commandResult.getMessage().get());
                         break;
                 }
 
             }
-            while (commandResult.getStatus() != CommandStatus.EXIT); //TODO: maybe I need more semantics on exit commands
+            while (commandResult.getStatus() != CommandStatus.EXIT);
 
             System.out.println("Job Done! Bye!");
         } else {

@@ -11,7 +11,7 @@ import static tech.sketch.command.CommandResult.unknownCommand;
 public class SketchCommandProcessor {
 
 
-    private static final String SUPPORTED_COMMAND_FORMAT = "XXX"; //TODO: specify the correct format
+    private static final String SUPPORTED_COMMAND_FORMAT = "CMD_NAME [CMD_PARAMS]";
 
     private final GraphicShell graphicShell;
 
