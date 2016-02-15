@@ -7,17 +7,16 @@
     <artifactId>tech-sketch</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-
-    
-
-    <!-- Package as an executable jar -->
-    <!-- check if i need this -->
     <build>
         <plugins>
-           <!-- <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>-->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.1</version>
+                <configuration>
+                    <mainClass>tech.sketch.app.Main</mainClass>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
