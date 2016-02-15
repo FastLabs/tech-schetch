@@ -12,9 +12,6 @@ public abstract class AbstractSketchCommand<T> implements SketchCommand<T> {
         this.commandSpec = commandSpec;
     }
 
-    public AbstractSketchCommand(String command) {
-        this(command.split(COMMAND_PARAM_SEPARATOR));
-    }
 
     public boolean isValidCommand() {
         return true;

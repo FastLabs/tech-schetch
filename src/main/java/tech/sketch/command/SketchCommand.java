@@ -3,7 +3,7 @@ package tech.sketch.command;
 import tech.sketch.canvas.SketchRenderer;
 
 public interface SketchCommand <T>{
-    String COMMAND_PARAM_SEPARATOR = " ";
+    String COMMAND_PARAM_SEPARATOR = "( )+";
 
     boolean isValidCommand();
 

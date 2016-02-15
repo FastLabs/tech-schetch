@@ -7,6 +7,8 @@ import tech.sketch.canvas.utils.BufferedRendererAsserter;
 import tech.sketch.canvas.utils.CanvasFactory;
 import tech.sketch.shape.Rectangle;
 
+import static org.junit.Assert.assertFalse;
+
 public class BucketFillCommandTest {
 
     final String[] emptyCanvas = new String[]{
@@ -28,6 +30,12 @@ public class BucketFillCommandTest {
 
 
     private final boolean showOnScreen = false;
+
+    @Test
+    public void notEnoughArguments() {
+        final BucketFillCommand cmd = new BucketFillCommand(new String[]{"B", "0"});
+        assertFalse("Not enough arguments", cmd.isValidCommand());
+    }
 
     @Test
     public void testFullFill() {

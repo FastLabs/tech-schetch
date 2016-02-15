@@ -18,6 +18,12 @@ public class LineShapeCommandTest {
     }
 
     @Test
+    public void notEnoughArguments() {
+        final LineShapeCommand cmd = new LineShapeCommand(new String[]{"L", "0", "10", "20"});
+        assertFalse("Not enough arguments", cmd.isValidCommand());
+    }
+
+    @Test
     public void notValidDiagonal() {
         final LineShapeCommand cmd = new LineShapeCommand(new String[]{"L", "10", "10", "20", "20"});
         assertFalse("Only horizontal and vertical supported", cmd.isValidCommand());

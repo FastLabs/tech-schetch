@@ -18,8 +18,14 @@ public class CreateCanvasCommandTest {
         assertEquals(20, cmd.getHeight());
         assertEquals("C %W %H", cmd.getCommandFormat());
         assertTrue(cmd.isValidCommand());
-
     }
+
+    @Test
+    public void notEnoughArguments() {
+        final CreateCanvasCommand cmd = new CreateCanvasCommand(new String[]{"C", "0"});
+        assertFalse("Not enough arguments", cmd.isValidCommand());
+    }
+
 
     @Test
     public void testNegativeBoundaries() {
@@ -36,7 +42,7 @@ public class CreateCanvasCommandTest {
     @Test
     public void testRendered() {
         final SketchCanvas canvas = new SketchCanvas(20, 12);
-        final CreateCanvasCommand cmd = new CreateCanvasCommand(new String[]{"C", "20", "12"});
+        final CreateCanvasCommand cmd = new CreateCanvasCommand(new String[]{"C", "22", "14"});
 
         BufferedRendererAsserter asserter = new BufferedRendererAsserter();
         final String[] emptyCanvas = new String[]{
@@ -57,7 +63,7 @@ public class CreateCanvasCommandTest {
         };
 
         cmd.execute(canvas, asserter);
-        asserter.getContent();
+        asserter.assertContent(emptyCanvas);
 
     }
 }

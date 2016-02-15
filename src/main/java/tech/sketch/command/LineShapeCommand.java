@@ -16,10 +16,10 @@ public class LineShapeCommand extends AbstractShapeCommand {
             commandError();
         } else {
             try {
-                x1 = Integer.parseInt(commandSpec[1].trim());
-                y1 = Integer.parseInt(commandSpec[2].trim());
-                x2 = Integer.parseInt(commandSpec[3].trim());
-                y2 = Integer.parseInt(commandSpec[4].trim());
+                x1 = Integer.parseInt(commandSpec[1]);
+                y1 = Integer.parseInt(commandSpec[2]);
+                x2 = Integer.parseInt(commandSpec[3]);
+                y2 = Integer.parseInt(commandSpec[4]);
             } catch (NumberFormatException ex) {
                 commandError();
             }

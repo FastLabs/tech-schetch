@@ -13,9 +13,6 @@ public abstract class AbstractShapeCommand extends AbstractSketchCommand<SketchC
         super(commandSpec);
     }
 
-    public AbstractShapeCommand(String command) {
-        super(command);
-    }
 
     @Override
     public CommandResult execute(SketchCanvas canvas, SketchRenderer renderer) {

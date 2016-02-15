@@ -13,14 +13,15 @@ public class RectangleShapeCommand extends AbstractShapeCommand {
 
         if (commandSpec.length != 5) {
             commandError();
-        }
-        try {
-            x = Integer.parseInt(commandSpec[1].trim());
-            y = Integer.parseInt(commandSpec[2].trim());
-            width = Integer.parseInt(commandSpec[3].trim());
-            height = Integer.parseInt(commandSpec[4].trim());
-        } catch (NumberFormatException ex) {
-            commandError();
+        } else {
+            try {
+                x = Integer.parseInt(commandSpec[1].trim());
+                y = Integer.parseInt(commandSpec[2].trim());
+                width = Integer.parseInt(commandSpec[3].trim());
+                height = Integer.parseInt(commandSpec[4].trim());
+            } catch (NumberFormatException ex) {
+                commandError();
+            }
         }
 
     }
@@ -31,7 +32,7 @@ public class RectangleShapeCommand extends AbstractShapeCommand {
 
     @Override
     public boolean isValidCommand() {
-        return x >= 0 || y >= 0 || height >= 0 || width >= 0;
+        return x >= 0 && y >= 0 && height >= 0 && width >= 0;
     }
 
     public RectangleShapeCommand(String command) {

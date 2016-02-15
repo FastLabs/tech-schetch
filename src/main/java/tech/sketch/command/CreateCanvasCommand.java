@@ -15,8 +15,8 @@ public class CreateCanvasCommand extends AbstractShapeCommand {
             commandError();
         } else {
             try {
-                width = Integer.parseInt(commandSpec[1].trim());
-                height = Integer.parseInt(commandSpec[2].trim());
+                width = Integer.parseInt(commandSpec[1]);
+                height = Integer.parseInt(commandSpec[2]);
             } catch (NumberFormatException ex) {
                 commandError();
 
