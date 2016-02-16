@@ -38,8 +38,9 @@ Available Cmmands
 - **Renderer** renders the canvas onto specific output, in this case system console 
 
 ##Implementation details
-Class diagram is provided in ./docs/class-diagram.png
-**Note:** I think the command validation and error management should be improved a little. I would say it requires a refactoring
+Class diagram is provided in: ./docs/class-diagram.png
+Test coverage is provided in: ./docs/tech-sketch-coverage.png 
+**Note:** I think the command validation and error management should be improved a little.
 Side effect classes that are not covered by the unit tests: Main and SketchRepl 
 
 ##Execution
