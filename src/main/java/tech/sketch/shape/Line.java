@@ -1,6 +1,8 @@
 package tech.sketch.shape;
 
 
+import java.awt.geom.Rectangle2D;
+
 public class Line extends AbstractShape {
     private final Point one;
     private final Point two;
@@ -28,6 +30,26 @@ public class Line extends AbstractShape {
     @Override
     public Path[] getPaths() {
         return new Path[]{new SimplePath(one, two, getFill())};
+    }
+
+    @Override
+    public Rectangle getBounds() {
+        int x, y, w, h;
+        if (one.getX() < two.getX()) {
+            x = one.getX();
+            w = two.getX() - one.getX();
+        } else {
+            x = two.getX();
+            w = one.getX() - two.getX();
+        }
+        if (one.getY() < two.getY() ) {
+            y = one.getY();
+            h = two.getY() - one.getY();
+        } else {
+            y = two.getY();
+            h = one.getY() - two.getY();
+        }
+        return new Rectangle(x, y, w, h);
     }
 
 

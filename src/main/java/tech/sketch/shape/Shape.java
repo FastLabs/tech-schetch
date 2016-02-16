@@ -7,4 +7,5 @@ public interface Shape {
 
 
     Path[] getPaths();
+    Rectangle getBounds();
 }

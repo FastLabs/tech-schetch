@@ -31,4 +31,51 @@ public class Rectangle extends AbstractShape {
                 left = new SimplePath(x, y + 1, x, y + height - 1, verticalFill);
         return new Path[]{top, right, bottom, left};
     }
+
+    @Override
+    public Rectangle getBounds() {
+        return this;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    @Override
+    public String toString() {
+        return "Rectangle{" +
+                "x=" + x +
+                ", y=" + y +
+                ", width=" + width +
+                ", height=" + height +
+                '}';
+    }
+
+    public boolean isEmpty() {
+        return (width <= 0.0 || height <= 0.0);
+    }
+
+    public boolean contains(Rectangle r) {
+        if (isEmpty()) {
+            return false;
+        }
+        double x0 = getX();
+        double y0 = getY();
+        return (r.getX() >= x0 &&
+                r.getY() >= y0 &&
+                (r.getX() + r.getWidth()) <= x0 + getWidth() &&
+                (r.getY() + r.getHeight()) <= y0 + getHeight());
+    }
 }

@@ -41,9 +41,9 @@ public class CreateCanvasCommandTest {
 
     @Test
     public void testRendered() {
-        final SketchCanvas canvas = new SketchCanvas(20, 12);
-        final CreateCanvasCommand cmd = new CreateCanvasCommand(new String[]{"C", "22", "14"});
 
+        final CreateCanvasCommand cmd = new CreateCanvasCommand(new String[]{"C", "22", "14"});
+        final SketchCanvas canvas = new SketchCanvas(cmd.getWidth()-2, cmd.getHeight()-2);
         BufferedRendererAsserter asserter = new BufferedRendererAsserter();
         final String[] emptyCanvas = new String[]{
                 "----------------------",

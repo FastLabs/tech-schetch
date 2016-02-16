@@ -3,7 +3,11 @@ package tech.sketch.shape;
 
 import org.junit.Test;
 
+import java.awt.geom.Rectangle2D;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class RectangleTest {
     @Test
@@ -35,5 +39,15 @@ public class RectangleTest {
         assertEquals(4, left.getFrom().getY());
         assertEquals(2, left.getTo().getX());
         assertEquals(18, left.getTo().getY());
+    }
+
+    @Test
+    public void testBoundaries() {
+        Rectangle inner = new Rectangle(2, 2, 10, 10);
+        Rectangle outer = new Rectangle(1, 1, 11, 11);
+
+        assertTrue(outer.contains(inner));
+        outer = new Rectangle(2, 3, 10, 12);
+        assertFalse(outer.contains(inner));
     }
 }

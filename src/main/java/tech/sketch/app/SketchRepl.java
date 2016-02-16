@@ -20,9 +20,10 @@ public class SketchRepl {
 
         final Console c = System.console();
         if (c != null) {
+            c.writer().write("***********-- Sketch Tech App --**************\n");
             CommandResult commandResult;
             do {
-                final String line = c.readLine("Enter sketch: ");
+                final String line = c.readLine("Enter Command: ");
                 commandResult = commandProcessor.processCommand(line);
                 switch (commandResult.getStatus()) {
                     case ERROR:

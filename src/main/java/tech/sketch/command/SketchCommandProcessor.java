@@ -23,7 +23,11 @@ public class SketchCommandProcessor {
     public CommandResult processCommand(final String command) {
         final String[] commandSpec = command.split(SketchCommand.COMMAND_PARAM_SEPARATOR);
         if (commandSpec.length > 0) {
-            final String commandName = commandSpec[0];
+            if(commandSpec [0] == null) {
+                return errorCommand("Please introduce a valid command");
+            }
+
+            final String commandName = commandSpec[0].toUpperCase();
             switch (commandName) {
                 case "Q":
                     return CommandResult.exitCommand();
@@ -53,10 +57,12 @@ public class SketchCommandProcessor {
             } else {
                 return errorCommand(String.format("Invalid command format. Required: %s", cmd.getCommandFormat()));
             }
-        } catch (RuntimeException ex) {
+        } catch (Exception ex) {
+            ex.printStackTrace();
             return errorCommand(String.format("Error executing the command: %s expected format: %s",
                     cmd.getCommandName(),
-                    cmd.getCommandFormat()));
+                    cmd.getCommandFormat() + ex.getMessage()));
+
         }
     }
 }

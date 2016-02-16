@@ -2,6 +2,7 @@ package tech.sketch.command;
 
 
 import org.junit.Test;
+import tech.sketch.canvas.GraphicShell;
 import tech.sketch.canvas.SketchCanvas;
 import tech.sketch.canvas.utils.BufferedRendererAsserter;
 import tech.sketch.canvas.utils.CanvasFactory;
@@ -80,4 +81,31 @@ public class LineShapeCommandTest {
         lCmd.execute(canvas, asserter);
         asserter.assertContent(expected);
     }
+    @Test
+    public void testOverBorder () {
+
+        final SketchCanvas canvas = CanvasFactory.defaultCanvas();
+        final BufferedRendererAsserter asserter = new BufferedRendererAsserter();
+
+        SketchCommandProcessor processor = new SketchCommandProcessor(new GraphicShell() {
+            @Override
+            public CommandResult execute(SketchCommand command) {
+                return command.execute(canvas, asserter );
+            }
+
+            @Override
+            public CommandResult newSketchCanvas(CreateCanvasCommand command) {
+                return null;
+            }
+        });
+
+        final LineShapeCommand lCmd = new LineShapeCommand("L 2 3 21 3");
+        CommandResult x = processor.processCommand("L 1 1 19 1");
+        //CommandResult y = processor.processCommand("L 1 1 20 1");
+        System.out.println(asserter.getContent());
+      //  processor.processCommand("L 2 3 20 3");
+        //System.out.println(asserter.getContent());
+
+    }
+
 }

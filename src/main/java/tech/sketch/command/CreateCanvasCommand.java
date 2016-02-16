@@ -1,10 +1,14 @@
 package tech.sketch.command;
 
 
+import tech.sketch.canvas.SketchCanvas;
+import tech.sketch.canvas.SketchRenderer;
 import tech.sketch.shape.Rectangle;
 import tech.sketch.shape.Shape;
 
-public class CreateCanvasCommand extends AbstractShapeCommand {
+import java.util.Arrays;
+
+public class CreateCanvasCommand extends AbstractSketchCommand<SketchCanvas> {
 
     private int width;
     private int height;
@@ -42,13 +46,24 @@ public class CreateCanvasCommand extends AbstractShapeCommand {
         return width >= 0 && height >= 0;
     }
 
-    @Override
-    public Shape sketchIt() {
-        return new Rectangle(-1, -1, width - 1, height - 1, '-', '|');
-    }
 
     @Override
     public String getCommandFormat() {
         return "C %W %H";
+    }
+
+    @Override
+    public CommandResult execute(SketchCanvas context, SketchRenderer renderer) {
+        char[][] canvas = context.getCanvas();
+        Arrays.fill(canvas[0], '-');
+        Arrays.fill(canvas[canvas.length - 1], '-');
+        for(int i = 1 ;i< canvas.length-1;i++) {
+            char [] x = canvas[i];
+            Arrays.fill(x, ' ');
+            x[0] = '|';
+            x[x.length-1] = '|';
+        }
+        renderer.render(context.printCanvas());
+        return CommandResult.success();
     }
 }

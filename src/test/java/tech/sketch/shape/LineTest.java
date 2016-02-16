@@ -1,9 +1,11 @@
 package tech.sketch.shape;
 
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class LineTest {
@@ -36,6 +38,25 @@ public class LineTest {
         assertEquals(1, from.getY());
         assertEquals(10, to.getX());
         assertEquals(1, to.getY());
+
+    }
+
+    @Test
+    public void testBoundary() {
+        final Rectangle boundary = new Rectangle(0, 0, 11, 13);
+        Line verticalLine = new Line(1, 1, 10, 1);
+        Rectangle lineBoundary = verticalLine.getBounds();
+        assertTrue(boundary.contains(lineBoundary));
+
+        verticalLine = new Line(1, 1, 12, 1);
+        assertFalse(boundary.contains(verticalLine.getBounds()));
+
+        Line horizontalLine = new Line(1, 1, 1, 10);
+        assertTrue(boundary.contains(horizontalLine.getBounds()));
+
+        horizontalLine = new Line(2, 2, 2, 14);
+
+        assertFalse(boundary.contains(horizontalLine.getBounds()));
 
     }
 }

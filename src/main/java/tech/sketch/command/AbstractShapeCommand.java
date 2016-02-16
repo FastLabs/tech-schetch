@@ -1,6 +1,7 @@
 package tech.sketch.command;
 
 
+import tech.sketch.canvas.CanvasException;
 import tech.sketch.canvas.SketchCanvas;
 import tech.sketch.canvas.SketchRenderer;
 import tech.sketch.shape.Shape;
@@ -17,7 +18,11 @@ public abstract class AbstractShapeCommand extends AbstractSketchCommand<SketchC
     @Override
     public CommandResult execute(SketchCanvas canvas, SketchRenderer renderer) {
         if (isValidCommand()) {
-            renderer.render(canvas.draw(sketchIt()));
+            try {
+                renderer.render(canvas.draw(sketchIt()));
+            }catch (CanvasException e ) {
+                return CommandResult.errorCommand(e.getMessage());
+            }
             return CommandResult.success();
         } else {
             return errorCommand(String.format("Expected command command: %s", this.getCommandFormat()));

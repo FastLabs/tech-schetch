@@ -4,7 +4,7 @@ package tech.sketch.command;
 import java.util.Optional;
 
 /**
- * Ecpasulates the status of a a command execution result. Used to propagate messages an
+ * Encapsulates the status of a a command execution result. Used to propagate messages an
  * actions to the console
  */
 public class CommandResult {
@@ -59,5 +59,13 @@ public class CommandResult {
 
     public boolean isSuccess() {
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "CommandResult{" +
+                "status=" + status +
+                ", message=" + (message.isPresent() ? message.get() : "") +
+                '}';
     }
 }

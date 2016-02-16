@@ -49,7 +49,9 @@ public class TextGraphicShell implements GraphicShell {
                 return errorCommand(String.format("Canvas boundaries are out of graphic shell. Expected W:%s, H:%s",
                         maxWidth, maxHeight));
             }
-            renderer.render(currentCanvas.draw(cmd.sketchIt()));
+
+            cmd.execute(currentCanvas, renderer);
+
             return success();
         } else {
             return errorCommand(String.format("Expected canvas creation format: %s", cmd.getCommandFormat()));

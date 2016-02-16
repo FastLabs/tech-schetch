@@ -73,7 +73,7 @@ public class BucketFillCommandTest {
     }
 
     @Test
-    public void testAreaFillIn() {
+    public void testAreaFillIn() throws Exception{
         final SketchCanvas canvas = CanvasFactory.defaultCanvas();
         final BufferedRendererAsserter asserter = new BufferedRendererAsserter();
         asserter.render(canvas.printCanvas());
@@ -104,7 +104,7 @@ public class BucketFillCommandTest {
     }
 
     @Test
-    public void testAreaFillOut() {
+    public void testAreaFillOut() throws Exception{
         final SketchCanvas canvas = CanvasFactory.defaultCanvas();
         final BufferedRendererAsserter asserter = new BufferedRendererAsserter();
         asserter.render(canvas.printCanvas());
